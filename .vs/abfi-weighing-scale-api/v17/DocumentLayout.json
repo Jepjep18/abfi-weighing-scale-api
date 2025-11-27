@@ -3,8 +3,60 @@
   "WorkspaceRootPath": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\dependencyinjection\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\dependencyinjection\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\repositories\\implementations\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\repositories\\interfaces\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\services\\implementations\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Migrations\\20251127064745_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:abfi-weighing-scale-api\\Migrations\\20251127064745_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\data\\configurations\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\data\\configurations\\userconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\models\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\models\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|c:\\users\\jbarnado\\desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5ED51A8D-DFA1-40ED-8D6B-42CBC703DBC7}|abfi-weighing-scale-api\\abfi-weighing-scale-api.csproj|solutionrelative:abfi-weighing-scale-api\\models\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,12 +71,181 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\.gitignore",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\.gitignore",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\.gitignore",
+              "RelativeToolTip": "abfi-weighing-scale-api\\.gitignore",
+              "ViewState": "AgIAAEkBAAAAAAAAAAAqwGoBAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-27T07:35:36.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ServiceRegistration.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\DependencyInjection\\ServiceRegistration.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\DependencyInjection\\ServiceRegistration.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\DependencyInjection\\ServiceRegistration.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\DependencyInjection\\ServiceRegistration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:49:56.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\appsettings.json",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\appsettings.json",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\appsettings.json",
+              "RelativeToolTip": "abfi-weighing-scale-api\\appsettings.json",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-27T06:37:52.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Program.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Program.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Program.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:37:29.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:35:39.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Services\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Services\\Interfaces\\IUserService.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Services\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Services\\Interfaces\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:24:40.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Services\\Implementations\\UserService.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Services\\Implementations\\UserService.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Services\\Implementations\\UserService.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Services\\Implementations\\UserService.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAA6wDAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:24:30.894Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Repositories\\Implementations\\UserRepository.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Repositories\\Implementations\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Repositories\\Implementations\\UserRepository.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Repositories\\Implementations\\UserRepository.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:23:47.297Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Repositories\\Interfaces\\IUserRepository.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Repositories\\Interfaces\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:23:36.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Data\\Configurations\\UserConfiguration.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Data\\Configurations\\UserConfiguration.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Data\\Configurations\\UserConfiguration.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Data\\Configurations\\UserConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:38:11.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "20251127064745_initial.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Migrations\\20251127064745_initial.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Migrations\\20251127064745_initial.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Migrations\\20251127064745_initial.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Migrations\\20251127064745_initial.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:47:46.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Models\\Dtos\\UserDto.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Models\\Dtos\\UserDto.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Models\\Dtos\\UserDto.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Models\\Dtos\\UserDto.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAcwBgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:21:46.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Models\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Models\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Models\\Entities\\User.cs",
+              "RelativeToolTip": "abfi-weighing-scale-api\\Models\\Entities\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T06:21:16.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "abfi-weighing-scale-api\\Data\\AppDbContext.cs",
               "ToolTip": "C:\\Users\\jbarnado\\Desktop\\abfi-weighing-scale-system\\abfi-weighing-scale-api\\abfi-weighing-scale-api\\Data\\AppDbContext.cs",
               "RelativeToolTip": "abfi-weighing-scale-api\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-27T02:27:06.468Z",
               "EditorCaption": ""
