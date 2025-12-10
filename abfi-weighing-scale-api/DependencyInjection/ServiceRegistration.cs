@@ -1,8 +1,9 @@
 ﻿using abfi_weighing_scale_api.Data;
 using abfi_weighing_scale_api.Repositories.Implementations;
 using abfi_weighing_scale_api.Repositories.Interfaces;
-using abfi_weighing_scale_api.Services.Interfaces;
 using abfi_weighing_scale_api.Services.Implementations;
+using abfi_weighing_scale_api.Services.Interfaces;
+using abfi_weighing_scale_api.Services.ProductClassifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace abfi_weighing_scale_api.DependencyInjection
@@ -20,6 +21,9 @@ namespace abfi_weighing_scale_api.DependencyInjection
 
             // Register Services
             services.AddScoped<IUserService, UserService>();
+
+            // Register ProductClassification Service
+            services.AddScoped<IProductClassificationService, ProductClassificationService>();
 
             return services;
         }
