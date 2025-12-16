@@ -3,13 +3,14 @@
     public class Production
     {
         public int Id { get; set; }
-        public int FarmId { get; set; }
-        public int? ForcastedTrips { get; set; }
-        public int? NoOfHeads { get; set; }
+        public string? ProductionName { get; set; } // Optional: give a name to the production
+        public int? TotalHeads { get; set; } // Total heads across all farms
         public DateTime? StartDateTime { get; set; }
         public DateTime? EndDateTime { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public string? Description { get; set; } // Optional: description
 
-        public virtual Farms? Farm { get; set; }
-
+        // Navigation properties
+        public virtual ICollection<ProductionFarm> ProductionFarms { get; set; } = new List<ProductionFarm>();
     }
 }

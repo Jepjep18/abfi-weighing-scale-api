@@ -1,8 +1,10 @@
-﻿using abfi_weighing_scale_api.Data;
+﻿using abfi_weighing_scale_api.Controllers.ProductClassification;
+using abfi_weighing_scale_api.Data;
 using abfi_weighing_scale_api.Models.Entities;
 using ClosedXML.Excel;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,8 @@ namespace abfi_weighing_scale_api.Services.ProductClassifications
     public interface IProductClassificationService
     {
         Task<(bool Success, string Message, int Count)> UploadAsync(IFormFile file);
+        Task<List<ProductClassificationListDto>> GetAllAsync();
+
     }
 
     // Service implementation
@@ -37,35 +41,41 @@ namespace abfi_weighing_scale_api.Services.ProductClassifications
             {
                 using var stream = file.OpenReadStream();
                 using var workbook = new XLWorkbook(stream);
-                var worksheet = workbook.Worksheet(1); // first sheet
+                var worksheet = workbook.Worksheet(1);
 
-                // Skip the header row
-                var rows = worksheet.RowsUsed().Skip(1);
+                var headerRow = worksheet.FirstRowUsed();
+                var dataRows = worksheet.RowsUsed().Skip(1);
 
-                foreach (var row in rows)
+                // Create a dictionary to map column headers to indices
+                var columnMap = new Dictionary<string, int>();
+                foreach (var cell in headerRow.CellsUsed())
+                {
+                    var header = cell.GetValue<string>()?.Trim().ToUpper();
+                    if (!string.IsNullOrEmpty(header))
+                    {
+                        columnMap[header] = cell.Address.ColumnNumber;
+                    }
+                }
+
+                foreach (var row in dataRows)
                 {
                     // Parse NoOfHeadsPerGalantina safely
                     int? noOfHeads = null;
-                    var noOfHeadsValue = row.Cell(4).GetValue<string>()?.Trim();
+                    var noOfHeadsValue = GetCellValue(row, "NO. HEADS PER GALANTINA", columnMap);
                     if (int.TryParse(noOfHeadsValue, out var heads))
                         noOfHeads = heads;
 
-                    // CratesWeight as string
-                    var cratesWeight = row.Cell(5).GetValue<string>()?.Trim();
-
                     items.Add(new Models.Entities.ProductClassification
                     {
-                        ProductCode = row.Cell(1).GetValue<string>()?.Trim(),
-                        IndividualWeightRange = row.Cell(2).GetValue<string>()?.Trim(),
-                        TotalWeightRangePerCrate = row.Cell(3).GetValue<string>()?.Trim(),
+                        ProductCode = GetCellValue(row, "PRODUCT CODE", columnMap),
+                        IndividualWeightRange = GetCellValue(row, "INDIVIDUAL WEIGHT RANGE", columnMap),
+                        TotalWeightRangePerCrate = GetCellValue(row, "TOTAL WEIGHT RANGE PER CRATES", columnMap),
                         NoOfHeadsPerGalantina = noOfHeads,
-                        CratesWeight = cratesWeight,
+                        CratesWeight = GetCellValue(row, "CRATES WEIGHT", columnMap),
                         IsActive = true,
                         CreatedAt = DateTime.UtcNow
                     });
                 }
-
-
 
                 await _context.ProductClassification.AddRangeAsync(items);
                 await _context.SaveChangesAsync();
@@ -76,6 +86,28 @@ namespace abfi_weighing_scale_api.Services.ProductClassifications
             {
                 return (false, $"Error processing Excel file: {ex.Message}", 0);
             }
+        }
+
+        private string GetCellValue(IXLRow row, string header, Dictionary<string, int> columnMap)
+        {
+            if (columnMap.TryGetValue(header.ToUpper(), out int columnIndex))
+            {
+                return row.Cell(columnIndex).GetValue<string>()?.Trim();
+            }
+            return null;
+        }
+
+        public async Task<List<ProductClassificationListDto>> GetAllAsync()
+        {
+            return await _context.ProductClassification
+                .AsNoTracking()
+                .Select(x => new ProductClassificationListDto
+                {
+                    Id = x.Id,
+                    ProductCode = x.ProductCode
+                })
+                .OrderBy(x => x.ProductCode)
+                .ToListAsync();
         }
     }
 }

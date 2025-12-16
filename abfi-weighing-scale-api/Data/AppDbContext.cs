@@ -15,8 +15,12 @@ namespace abfi_weighing_scale_api.Data
         // DBSets (tables)
         public DbSet<User> Users { get; set; } = default!;
         public DbSet<ProductClassification> ProductClassification { get; set; }
-        public DbSet<Production> Productions { get; set; }
+        public DbSet<Production> Production { get; set; }
+        public DbSet<ProductionFarm> ProductionFarms { get; set; }
         public DbSet<Farms> Farms { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<BookingItem> BookingItems { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

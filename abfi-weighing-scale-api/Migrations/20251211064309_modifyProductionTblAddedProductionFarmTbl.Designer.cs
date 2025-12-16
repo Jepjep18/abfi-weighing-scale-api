@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using abfi_weighing_scale_api.Data;
 
@@ -11,9 +12,11 @@ using abfi_weighing_scale_api.Data;
 namespace abfi_weighing_scale_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251211064309_modifyProductionTblAddedProductionFarmTbl")]
+    partial class modifyProductionTblAddedProductionFarmTbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,111 +24,6 @@ namespace abfi_weighing_scale_api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.Booking", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("BookingDate")
-                        .HasColumnType("date");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("SYSUTCDATETIME()");
-
-                    b.Property<string>("Remarks")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookingDate")
-                        .HasDatabaseName("IX_Bookings_BookingDate");
-
-                    b.ToTable("Bookings", (string)null);
-                });
-
-            modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.BookingItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("BookingId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("SYSUTCDATETIME()");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsPrio")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<int>("ProductClassificationId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Quantity")
-                        .HasPrecision(12, 2)
-                        .HasColumnType("decimal(12,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("IsPrio")
-                        .HasDatabaseName("IX_BookingItems_IsPrio");
-
-                    b.HasIndex("ProductClassificationId");
-
-                    b.HasIndex("BookingId", "CustomerId", "ProductClassificationId")
-                        .IsUnique()
-                        .HasDatabaseName("UX_BookingItems_Booking_Customer_Product");
-
-                    b.ToTable("BookingItems", (string)null);
-                });
-
-            modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.Customer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("SYSUTCDATETIME()");
-
-                    b.Property<string>("CustomerName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("CustomerType")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerName")
-                        .HasDatabaseName("IX_Customers_CustomerName");
-
-                    b.ToTable("Customers", (string)null);
-                });
 
             modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.Farms", b =>
                 {
@@ -180,7 +78,7 @@ namespace abfi_weighing_scale_api.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("SYSUTCDATETIME()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("IndividualWeightRange")
                         .HasMaxLength(100)
@@ -196,7 +94,6 @@ namespace abfi_weighing_scale_api.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ProductCode")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -206,13 +103,7 @@ namespace abfi_weighing_scale_api.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IsActive")
-                        .HasDatabaseName("IX_ProductClassification_IsActive");
-
-                    b.HasIndex("ProductCode")
-                        .HasDatabaseName("IX_ProductClassification_ProductCode");
-
-                    b.ToTable("ProductClassification", (string)null);
+                    b.ToTable("ProductClassification");
                 });
 
             modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.Production", b =>
@@ -285,7 +176,7 @@ namespace abfi_weighing_scale_api.Migrations
                     b.Property<int>("FarmId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ForecastedTrips")
+                    b.Property<int?>("ForcastedTrips")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasDefaultValue(0);
@@ -338,33 +229,6 @@ namespace abfi_weighing_scale_api.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.BookingItem", b =>
-                {
-                    b.HasOne("abfi_weighing_scale_api.Models.Entities.Booking", "Booking")
-                        .WithMany("BookingItems")
-                        .HasForeignKey("BookingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("abfi_weighing_scale_api.Models.Entities.Customer", "Customer")
-                        .WithMany("BookingItems")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("abfi_weighing_scale_api.Models.Entities.ProductClassification", "ProductClassification")
-                        .WithMany("BookingItems")
-                        .HasForeignKey("ProductClassificationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Booking");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("ProductClassification");
-                });
-
             modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.ProductionFarm", b =>
                 {
                     b.HasOne("abfi_weighing_scale_api.Models.Entities.Farms", "Farm")
@@ -384,24 +248,9 @@ namespace abfi_weighing_scale_api.Migrations
                     b.Navigation("Production");
                 });
 
-            modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.Booking", b =>
-                {
-                    b.Navigation("BookingItems");
-                });
-
-            modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.Customer", b =>
-                {
-                    b.Navigation("BookingItems");
-                });
-
             modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.Farms", b =>
                 {
                     b.Navigation("ProductionFarms");
-                });
-
-            modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.ProductClassification", b =>
-                {
-                    b.Navigation("BookingItems");
                 });
 
             modelBuilder.Entity("abfi_weighing_scale_api.Models.Entities.Production", b =>

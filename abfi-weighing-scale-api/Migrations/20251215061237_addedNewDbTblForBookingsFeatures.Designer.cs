@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using abfi_weighing_scale_api.Data;
 
@@ -11,9 +12,11 @@ using abfi_weighing_scale_api.Data;
 namespace abfi_weighing_scale_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251215061237_addedNewDbTblForBookingsFeatures")]
+    partial class addedNewDbTblForBookingsFeatures
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,11 +72,6 @@ namespace abfi_weighing_scale_api.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("IsPrio")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
                     b.Property<int>("ProductClassificationId")
                         .HasColumnType("int");
 
@@ -84,9 +82,6 @@ namespace abfi_weighing_scale_api.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("IsPrio")
-                        .HasDatabaseName("IX_BookingItems_IsPrio");
 
                     b.HasIndex("ProductClassificationId");
 

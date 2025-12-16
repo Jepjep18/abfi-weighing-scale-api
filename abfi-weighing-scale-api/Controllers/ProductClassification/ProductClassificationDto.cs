@@ -21,4 +21,9 @@ namespace abfi_weighing_scale_api.Controllers.ProductClassification
         public decimal CratesWeight { get; set; }
     }
 
+    public class ProductClassificationListDto
+    {
+        public int Id { get; set; }
+        public string? ProductCode { get; set; }
+    }
 }

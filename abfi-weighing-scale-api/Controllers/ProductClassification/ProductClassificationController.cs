@@ -40,5 +40,14 @@ namespace abfi_weighing_scale_api.Controllers.ProductClassification
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _service.GetAllAsync();
+
+            return Ok(result);
+        }
+
+
     }
 }

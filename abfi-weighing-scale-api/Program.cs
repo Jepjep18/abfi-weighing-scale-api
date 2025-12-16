@@ -7,6 +7,22 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services
 builder.Services.AddControllers();
 
+// Add CORS policy for Angular app
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        builder =>
+        {
+            builder.WithOrigins(
+                    "http://localhost:4200",          // Angular dev server
+                    "https://localhost:4200"          // Angular dev server with HTTPS
+                )
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        });
+});
+
 // Enable Swagger + configure IFormFile support
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -33,6 +49,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// Add CORS middleware - Must be before UseAuthorization() and MapControllers()
+app.UseCors("AllowAngularApp");
+
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

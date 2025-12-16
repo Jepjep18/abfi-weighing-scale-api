@@ -8,21 +8,23 @@ namespace abfi_weighing_scale_api.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Production> builder)
         {
-            // Configure the Farm relationship
-            builder.HasOne(p => p.Farm)
-                   .WithMany() // Use .WithMany(f => f.Productions) if you add the navigation property in Farms
-                   .HasForeignKey(p => p.FarmId)
-                   .OnDelete(DeleteBehavior.Restrict); // Prevents deleting a farm if it has productions
+            // Add new relationship with ProductionFarm
+            builder.HasMany(p => p.ProductionFarms)
+                   .WithOne(pf => pf.Production)
+                   .HasForeignKey(pf => pf.ProductionId)
+                   .OnDelete(DeleteBehavior.Cascade); // When production is deleted, delete all associated ProductionFarm records
 
-            // FarmId is required
-            builder.Property(p => p.FarmId)
-                   .IsRequired();
+            // Configure properties
+            builder.Property(p => p.ProductionName)
+                   .HasMaxLength(200)
+                   .IsRequired(false); // Make it optional if needed
+
+            builder.Property(p => p.Description)
+                   .HasMaxLength(500)
+                   .IsRequired(false);
 
             // Add defaults for nullable properties
-            builder.Property(p => p.ForcastedTrips)
-                   .HasDefaultValue(0);
-
-            builder.Property(p => p.NoOfHeads)
+            builder.Property(p => p.TotalHeads)
                    .HasDefaultValue(0);
 
             // Configure DateTime properties
@@ -32,15 +34,22 @@ namespace abfi_weighing_scale_api.Data.Configurations
             builder.Property(p => p.EndDateTime)
                    .HasColumnType("datetime");
 
-            // Optional: Add indexes for better query performance
-            builder.HasIndex(p => p.FarmId)
-                   .HasDatabaseName("IX_Production_FarmId");
+            builder.Property(p => p.CreatedAt)
+                   .HasColumnType("datetime")
+                   .HasDefaultValueSql("GETUTCDATE()");
+
+            // Add indexes for better query performance
+            builder.HasIndex(p => p.ProductionName)
+                   .HasDatabaseName("IX_Production_ProductionName");
 
             builder.HasIndex(p => p.StartDateTime)
                    .HasDatabaseName("IX_Production_StartDateTime");
 
             builder.HasIndex(p => p.EndDateTime)
                    .HasDatabaseName("IX_Production_EndDateTime");
+
+            builder.HasIndex(p => p.CreatedAt)
+                   .HasDatabaseName("IX_Production_CreatedAt");
         }
     }
 }

@@ -11,5 +11,8 @@
         public bool? IsActive { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? LastUpdatedAt { get; set; }
+
+        public ICollection<BookingItem> BookingItems { get; set; } = new List<BookingItem>();
+
     }
 }
