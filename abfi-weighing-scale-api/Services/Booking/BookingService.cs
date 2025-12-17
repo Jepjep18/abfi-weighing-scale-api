@@ -1,4 +1,6 @@
 ﻿using abfi_weighing_scale_api.Controllers.Booking;
+using abfi_weighing_scale_api.Controllers.Customer;
+using abfi_weighing_scale_api.Controllers.ProductClassification;
 using abfi_weighing_scale_api.Data;
 using abfi_weighing_scale_api.Exceptions;
 using abfi_weighing_scale_api.Models.Dtos;
@@ -70,12 +72,12 @@ namespace abfi_weighing_scale_api.Services.Booking
                 _logger.LogError(ex, "Error creating booking");
                 throw new Exception($"Failed to create booking: {ex.Message}");
             }
-        }
+        } 
 
         private async Task ProcessBookingItemAsync(int bookingId, BookingItemDto itemDto)
         {
             // Get or create customer
-            var customer = await GetOrCreateCustomerAsync(itemDto.CustomerName);
+            var customer = await GetOrCreateCustomerAsync(itemDto.CustomerName, itemDto.CustomerType);
 
             // Process each product quantity for this customer
             foreach (var productQuantity in itemDto.ProductQuantities)
@@ -114,7 +116,7 @@ namespace abfi_weighing_scale_api.Services.Booking
             }
         }
 
-        private async Task<Customer> GetOrCreateCustomerAsync(string customerName)
+        private async Task<Customer> GetOrCreateCustomerAsync(string customerName, string customerType)
         {
             var normalizedName = customerName.Trim().ToLower();
 
@@ -126,14 +128,25 @@ namespace abfi_weighing_scale_api.Services.Booking
                 customer = new Customer
                 {
                     CustomerName = customerName.Trim(),
-                    CustomerType = "Distributor",
+                    CustomerType = customerType.Trim(), 
                     CreatedAt = DateTime.UtcNow
                 };
 
                 await _context.Customer.AddAsync(customer);
                 await _context.SaveChangesAsync();
 
-                _logger.LogInformation($"Created new customer: {customerName}");
+                _logger.LogInformation($"Created new customer: {customerName}, Type: {customerType}");
+            }
+            else
+            {
+                if (customer.CustomerType != customerType)
+                {
+                    customer.CustomerType = customerType;
+                    _context.Customer.Update(customer);
+                    await _context.SaveChangesAsync();
+
+                    _logger.LogInformation($"Updated customer type: {customerName} to {customerType}");
+                }
             }
 
             return customer;
@@ -146,6 +159,7 @@ namespace abfi_weighing_scale_api.Services.Booking
                     .ThenInclude(bi => bi.Customer)
                 .Include(b => b.BookingItems)
                     .ThenInclude(bi => bi.ProductClassification)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(b => b.Id == id);
 
             if (booking == null)
@@ -154,11 +168,45 @@ namespace abfi_weighing_scale_api.Services.Booking
                 throw new NotFoundException($"Booking with ID {id} not found");
             }
 
-            var response = _mapper.Map<BookingResponseDto>(booking);
-
-            // Calculate totals
-            //response.TotalQuantity = booking.BookingItems.Sum(bi => bi.Quantity);
-            //response.TotalAmount = booking.BookingItems.Sum(bi => bi.Quantity) * 146;
+            var response = new BookingResponseDto
+            {
+                Id = booking.Id,
+                BookingDate = booking.BookingDate,
+                Remarks = booking.Remarks,
+                CreatedAt = booking.CreatedAt,
+                CustomerCount = booking.BookingItems
+                    .Select(bi => bi.CustomerId)
+                    .Distinct()
+                    .Count(),
+                Items = booking.BookingItems.Select(bi => new BookingItemResponseDto
+                {
+                    Id = bi.Id,
+                    //CustomerName = bi.Customer != null ? bi.Customer.CustomerName : string.Empty,
+                    //ProductCode = bi.ProductClassification != null ?
+                    //             bi.ProductClassification.ProductCode ?? string.Empty : string.Empty,
+                    Quantity = bi.Quantity,
+                    IsPrio = bi.IsPrio,
+                    CreatedAt = bi.CreatedAt,
+                    Customer = bi.Customer != null ?
+                        new CustomerDto
+                        {
+                            Id = bi.Customer.Id,
+                            CustomerName = bi.Customer.CustomerName,
+                            CustomerType = bi.Customer.CustomerType
+                        } : null,
+                    ProductClassification = bi.ProductClassification != null ?
+                        new ProductClassificationDto
+                        {
+                            Id = bi.ProductClassification.Id,
+                            ProductCode = bi.ProductClassification.ProductCode ?? string.Empty,
+                            IndividualWeightRange = bi.ProductClassification.IndividualWeightRange ?? string.Empty,
+                            TotalWeightRangePerCrate = bi.ProductClassification.TotalWeightRangePerCrate ?? string.Empty,
+                            NoOfHeadsPerGalantina = bi.ProductClassification.NoOfHeadsPerGalantina ?? 0,
+                            CratesWeight = bi.ProductClassification.CratesWeight ?? string.Empty,
+                            IsActive = bi.ProductClassification.IsActive ?? false,
+                        } : null
+                }).ToList()
+            };
 
             return response;
         }

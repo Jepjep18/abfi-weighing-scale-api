@@ -4,6 +4,13 @@ namespace abfi_weighing_scale_api.Controllers.ProductClassification
 {
     public class ProductClassificationDto
     {
+        public int Id { get; set; }
+        public string ProductCode { get; set; }
+        public string IndividualWeightRange { get; set; }
+        public string TotalWeightRangePerCrate { get; set; }
+        public int NoOfHeadsPerGalantina { get; set; }
+        public string CratesWeight { get; set; }
+        public bool IsActive { get; set; }
     }
 
     public class ProductClassificationFileUploadDto

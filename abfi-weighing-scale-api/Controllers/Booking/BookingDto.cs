@@ -1,4 +1,7 @@
-﻿namespace abfi_weighing_scale_api.Controllers.Booking
+﻿using abfi_weighing_scale_api.Controllers.Customer;
+using abfi_weighing_scale_api.Controllers.ProductClassification;
+
+namespace abfi_weighing_scale_api.Controllers.Booking
 {
     public class CreateBookingDto
     {
@@ -10,6 +13,7 @@
     public class BookingItemDto
     {
         public string CustomerName { get; set; } = null!;
+        public string CustomerType { get; set; } = null!;
         public bool IsPrio { get; set; }
         public Dictionary<int, decimal> ProductQuantities { get; set; } = new();
     }
@@ -24,17 +28,19 @@
         //public decimal TotalAmount { get; set; }
         public int CustomerCount { get; set; } // <-- NEW
 
-        //public List<BookingItemResponseDto> Items { get; set; } = new();
+        public List<BookingItemResponseDto> Items { get; set; } = new();
     }
 
     public class BookingItemResponseDto
     {
         public int Id { get; set; }
-        public string CustomerName { get; set; } = null!;
-        public string ProductCode { get; set; } = null!;
+        //public string CustomerName { get; set; } = null!;
+        //public string ProductCode { get; set; } = null!;
         public decimal Quantity { get; set; }
         public bool IsPrio { get; set; }
         public DateTime CreatedAt { get; set; }
+        public CustomerDto Customer { get; set; }
+        public ProductClassificationDto ProductClassification { get; set; }
     }
 
     public class BookingRequestDto

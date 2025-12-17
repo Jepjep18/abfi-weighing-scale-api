@@ -20,13 +20,13 @@ namespace abfi_weighing_scale_api.Middleware
                                                         .Select(bi => bi.CustomerId)
                                                         .Distinct()
                                                         .Count()));
-                //.ForMember(dest => dest.Items,
-                //           opt => opt.MapFrom(src => src.BookingItems)); // maps BookingItem -> BookingItemResponseDto
+            //.ForMember(dest => dest.Items,
+            //           opt => opt.MapFrom(src => src.BookingItems)); // maps BookingItem -> BookingItemResponseDto
 
             // BookingItem -> BookingItemResponseDto
             CreateMap<BookingItem, BookingItemResponseDto>()
-                .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.CustomerName))
-                .ForMember(dest => dest.ProductCode, opt => opt.MapFrom(src => src.ProductClassification.ProductCode))
+                .ForPath(dest => dest.Customer.CustomerName, opt => opt.MapFrom(src => src.Customer.CustomerName))
+                .ForPath(dest => dest.ProductClassification.ProductCode, opt => opt.MapFrom(src => src.ProductClassification.ProductCode))
                 .ForMember(dest => dest.IsPrio, opt => opt.MapFrom(src => src.IsPrio));
         }
     }
