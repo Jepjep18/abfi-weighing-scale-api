@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using abfi_weighing_scale_api.Data;
 
@@ -11,9 +12,11 @@ using abfi_weighing_scale_api.Data;
 namespace abfi_weighing_scale_api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251218031244_WeighingDetailsModels")]
+    partial class WeighingDetailsModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,7 +189,7 @@ namespace abfi_weighing_scale_api.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("ID");
+                        .HasColumnName("Id");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -196,31 +199,9 @@ namespace abfi_weighing_scale_api.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasColumnName("Class");
 
-                    b.Property<decimal?>("CratesWeight_Max")
-                        .HasColumnType("numeric(18,3)")
-                        .HasColumnName("CratesWeight_Max");
-
-                    b.Property<decimal?>("CratesWeight_Min")
-                        .HasColumnType("numeric(18,3)")
-                        .HasColumnName("CratesWeight_Min");
-
-                    b.Property<decimal?>("IndvWeight_Max")
-                        .HasColumnType("numeric(18,3)")
-                        .HasColumnName("IndvWeight_Max");
-
-                    b.Property<decimal?>("IndvWeight_Min")
-                        .HasColumnType("numeric(18,3)")
-                        .HasColumnName("IndvWeight_Min");
-
                     b.Property<int?>("NumHeads")
                         .HasColumnType("int")
                         .HasColumnName("NumHeads");
-
-                    b.Property<string>("ProdCode")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)")
-                        .HasColumnName("ProdCode");
 
                     b.Property<decimal?>("TotalIndvWeight_Max")
                         .HasColumnType("numeric(18,3)")
@@ -230,11 +211,11 @@ namespace abfi_weighing_scale_api.Migrations
                         .HasColumnType("numeric(18,3)")
                         .HasColumnName("TotalIndvWeight_Min");
 
-                    b.Property<string>("UoMAll")
+                    b.Property<string>("prodCode")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)")
-                        .HasColumnName("UoMAll");
+                        .HasColumnName("prodCode");
 
                     b.HasKey("Id");
 

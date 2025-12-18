@@ -2,12 +2,15 @@
 using abfi_weighing_scale_api.Middleware;
 using abfi_weighing_scale_api.Repositories.Implementations;
 using abfi_weighing_scale_api.Repositories.Interfaces;
+using abfi_weighing_scale_api.Services;
 using abfi_weighing_scale_api.Services.Booking;
 using abfi_weighing_scale_api.Services.Farms;
 using abfi_weighing_scale_api.Services.Implementations;
 using abfi_weighing_scale_api.Services.Interfaces;
 using abfi_weighing_scale_api.Services.ProductClassifications;
 using abfi_weighing_scale_api.Services.Production;
+using abfi_weighing_scale_api.Services.WeighingDataProcessorService;
+using abfi_weighing_scale_api.Services.WeighingService;
 using Microsoft.EntityFrameworkCore;
 
 namespace abfi_weighing_scale_api.DependencyInjection
@@ -38,8 +41,16 @@ namespace abfi_weighing_scale_api.DependencyInjection
             // Production Service
             services.AddScoped<IProductionService, ProductionService>();
 
-            //booking Service
+            // Booking Service
             services.AddScoped<IBookingService, BookingService>();
+
+            // ===================== NEW WEIGHING SERVICES =====================
+            // Weighing Data Processor (logic from GetProdClass stored procedure)
+            services.AddScoped<IWeighingDataProcessor, WeighingDataProcessor>();
+
+            // Weighing Service (main service for weighing operations)
+            services.AddScoped<IWeighingService, WeighingService>();
+            // ===================== END WEIGHING SERVICES =====================
 
             return services;
         }

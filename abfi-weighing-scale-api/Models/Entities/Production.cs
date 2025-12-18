@@ -12,5 +12,7 @@
 
         // Navigation properties
         public virtual ICollection<ProductionFarm> ProductionFarms { get; set; } = new List<ProductionFarm>();
+        public virtual ICollection<WeighingDetail> WeighingDetails { get; set; }
+
     }
 }
