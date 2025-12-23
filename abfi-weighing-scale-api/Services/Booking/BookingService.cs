@@ -45,7 +45,7 @@ namespace abfi_weighing_scale_api.Services.Booking
             {
                 _logger.LogInformation("Creating new booking...");
 
-                // 1. Create Booking entity - Use FULLY QUALIFIED NAME
+                // 1. Create Booking entity
                 var booking = _mapper.Map<Models.Entities.Booking>(createBookingDto);
                 await _context.Bookings.AddAsync(booking);
                 await _context.SaveChangesAsync();
@@ -72,19 +72,32 @@ namespace abfi_weighing_scale_api.Services.Booking
                 _logger.LogError(ex, "Error creating booking");
                 throw new Exception($"Failed to create booking: {ex.Message}");
             }
-        } 
+        }
 
         private async Task ProcessBookingItemAsync(int bookingId, BookingItemDto itemDto)
         {
-            // Get or create customer
-            var customer = await GetOrCreateCustomerAsync(itemDto.CustomerName, itemDto.CustomerType);
+            // 1. Verify customer exists (using CustomerId instead of name)
+            var customer = await _context.Customer
+                .FirstOrDefaultAsync(c => c.Id == itemDto.CustomerId);
 
-            // Process each product quantity for this customer
+            if (customer == null)
+            {
+                _logger.LogWarning($"Customer with ID {itemDto.CustomerId} not found");
+                throw new Exception($"Customer with ID {itemDto.CustomerId} does not exist");
+            }
+
+            // 2. Process advance payment if provided
+            if (itemDto.AdvancePayment != null && itemDto.AdvancePayment.AdvanceAmount > 0)
+            {
+                await ProcessAdvancePaymentAsync(bookingId, customer.Id, itemDto.AdvancePayment);
+            }
+
+            // 3. Process each product quantity for this customer
             foreach (var productQuantity in itemDto.ProductQuantities)
             {
                 if (productQuantity.Value <= 0)
                 {
-                    _logger.LogWarning($"Skipping zero quantity for {itemDto.CustomerName}");
+                    _logger.LogWarning($"Skipping zero quantity for customer ID: {itemDto.CustomerId}");
                     continue;
                 }
 
@@ -116,6 +129,28 @@ namespace abfi_weighing_scale_api.Services.Booking
             }
         }
 
+        private async Task ProcessAdvancePaymentAsync(int bookingId, int customerId, AdvancePaymentDto advancePayment)
+        {
+            // Create advance payment record
+            var bookingAdvance = new BookingCustomerAdvance
+            {
+                BookingId = bookingId,
+                CustomerId = customerId,
+                AdvanceAmount = advancePayment.AdvanceAmount,
+                PaymentDate = advancePayment.PaymentDate,
+                PaymentMethod = advancePayment.PaymentMethod,
+                ReferenceNumber = advancePayment.ReferenceNumber,
+            };
+
+            await _context.BookingCustomerAdvances.AddAsync(bookingAdvance);
+
+            _logger.LogDebug($"Added advance payment: Customer {customerId}, " +
+                            $"Amount: {advancePayment.AdvanceAmount}, " +
+                            $"Method: {advancePayment.PaymentMethod}");
+        }
+
+        // Optional: Remove GetOrCreateCustomerAsync if you're always using existing customers
+        // Or keep it for backward compatibility
         private async Task<Customer> GetOrCreateCustomerAsync(string customerName, string customerType)
         {
             var normalizedName = customerName.Trim().ToLower();
@@ -128,7 +163,7 @@ namespace abfi_weighing_scale_api.Services.Booking
                 customer = new Customer
                 {
                     CustomerName = customerName.Trim(),
-                    CustomerType = customerType.Trim(), 
+                    CustomerType = customerType.Trim(),
                     CreatedAt = DateTime.UtcNow
                 };
 

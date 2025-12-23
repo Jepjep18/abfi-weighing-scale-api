@@ -43,13 +43,33 @@ namespace abfi_weighing_scale_api.Controllers.Booking
                 {
                     var item = createBookingDto.Items[i];
 
-                    if (string.IsNullOrWhiteSpace(item.CustomerName))
-                        validationErrors.Add($"Item {i + 1}: Customer name is required");
+                    // Updated validation - using CustomerId instead of CustomerName
+                    if (item.CustomerId <= 0)
+                        validationErrors.Add($"Item {i + 1}: Valid customer ID is required");
 
+                    // Validate advance payment if provided
+                    if (item.AdvancePayment != null)
+                    {
+                        if (item.AdvancePayment.AdvanceAmount < 0)
+                            validationErrors.Add($"Item {i + 1}: Advance amount cannot be negative");
+
+                        if (item.AdvancePayment.AdvanceAmount > 0 && item.AdvancePayment.PaymentDate == default)
+                            validationErrors.Add($"Item {i + 1}: Payment date is required for advance payment");
+
+                        if (item.AdvancePayment.AdvanceAmount > 0 && string.IsNullOrWhiteSpace(item.AdvancePayment.PaymentMethod))
+                            validationErrors.Add($"Item {i + 1}: Payment method is required for advance payment");
+                    }
+
+                    // Validate product quantities
                     if (item.ProductQuantities == null || !item.ProductQuantities.Any())
-                        validationErrors.Add($"Item {i + 1}: Product quantities required for customer: {item.CustomerName}");
+                    {
+                        // Get customer name for error message (optional - fetch from DB if needed)
+                        validationErrors.Add($"Item {i + 1}: At least one product quantity is required");
+                    }
                     else if (item.ProductQuantities.Values.Any(qty => qty < 0))
-                        validationErrors.Add($"Item {i + 1}: Quantity cannot be negative");
+                    {
+                        validationErrors.Add($"Item {i + 1}: Product quantity cannot be negative");
+                    }
                 }
 
                 if (validationErrors.Any())

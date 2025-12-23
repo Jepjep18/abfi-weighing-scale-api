@@ -11,5 +11,6 @@
 
         // Navigation
         public ICollection<BookingItem> BookingItems { get; set; } = new List<BookingItem>();
+        public ICollection<BookingCustomerAdvance> CustomerAdvances { get; set; } = new List<BookingCustomerAdvance>();
     }
 }

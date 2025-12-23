@@ -24,6 +24,7 @@ namespace abfi_weighing_scale_api.Data
         public DbSet<WeighingDetail> WeighingDetails { get; set; }
         public DbSet<PortClassification> PortClassifications { get; set; }
         public DbSet<ProdClassification> ProdClassifications { get; set; }
+        public DbSet<BookingCustomerAdvance> BookingCustomerAdvances { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
