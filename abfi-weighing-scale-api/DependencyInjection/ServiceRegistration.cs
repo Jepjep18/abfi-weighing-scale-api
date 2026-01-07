@@ -52,6 +52,9 @@ namespace abfi_weighing_scale_api.DependencyInjection
             services.AddScoped<IWeighingService, WeighingService>();
             // ===================== END WEIGHING SERVICES =====================
 
+            //weighing production group
+            services.AddScoped<IWeighingProductionGroupService, WeighingProductionGroupService>();
+
             return services;
         }
     }

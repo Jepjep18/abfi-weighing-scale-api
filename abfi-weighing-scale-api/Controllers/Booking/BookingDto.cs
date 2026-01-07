@@ -24,10 +24,8 @@ namespace abfi_weighing_scale_api.Controllers.Booking
     public class AdvancePaymentDto
     {
         public decimal AdvanceAmount { get; set; }
-        public DateTime PaymentDate { get; set; }
-        public string? PaymentMethod { get; set; }
-        public string? ReferenceNumber { get; set; }
     }
+
 
     public class BookingResponseDto
     {

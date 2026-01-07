@@ -52,12 +52,6 @@ namespace abfi_weighing_scale_api.Controllers.Booking
                     {
                         if (item.AdvancePayment.AdvanceAmount < 0)
                             validationErrors.Add($"Item {i + 1}: Advance amount cannot be negative");
-
-                        if (item.AdvancePayment.AdvanceAmount > 0 && item.AdvancePayment.PaymentDate == default)
-                            validationErrors.Add($"Item {i + 1}: Payment date is required for advance payment");
-
-                        if (item.AdvancePayment.AdvanceAmount > 0 && string.IsNullOrWhiteSpace(item.AdvancePayment.PaymentMethod))
-                            validationErrors.Add($"Item {i + 1}: Payment method is required for advance payment");
                     }
 
                     // Validate product quantities

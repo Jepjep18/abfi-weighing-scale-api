@@ -16,6 +16,47 @@ namespace abfi_weighing_scale_api.Controllers.Customer
             _context = context;
         }
 
+        // POST: api/Customers
+        [HttpPost]
+        public async Task<ActionResult<CustomerDto>> CreateCustomer([FromBody] CustomerDto dto)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(dto.CustomerName))
+                {
+                    return BadRequest("Customer name is required.");
+                }
+
+                var customer = new Models.Entities.Customer
+                {
+                    CustomerName = dto.CustomerName,
+                    CustomerType = dto.CustomerType
+                };
+
+                _context.Customer.Add(customer);
+                await _context.SaveChangesAsync();
+
+                var result = new CustomerDto
+                {
+                    Id = customer.Id,
+                    CustomerName = customer.CustomerName,
+                    CustomerType = customer.CustomerType
+                };
+
+                return CreatedAtAction(
+                    nameof(GetCustomer),
+                    new { id = customer.Id },
+                    result
+                );
+            }
+            catch (Exception ex)
+            {
+                // Log exception here
+                return StatusCode(500, "An error occurred while creating the customer.");
+            }
+        }
+
+
         // GET: api/Customers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CustomerDto>>> GetCustomers()

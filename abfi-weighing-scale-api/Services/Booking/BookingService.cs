@@ -129,25 +129,27 @@ namespace abfi_weighing_scale_api.Services.Booking
             }
         }
 
-        private async Task ProcessAdvancePaymentAsync(int bookingId, int customerId, AdvancePaymentDto advancePayment)
+        private async Task ProcessAdvancePaymentAsync(
+        int bookingId,
+        int customerId,
+        AdvancePaymentDto advancePayment)
         {
-            // Create advance payment record
             var bookingAdvance = new BookingCustomerAdvance
             {
                 BookingId = bookingId,
                 CustomerId = customerId,
                 AdvanceAmount = advancePayment.AdvanceAmount,
-                PaymentDate = advancePayment.PaymentDate,
-                PaymentMethod = advancePayment.PaymentMethod,
-                ReferenceNumber = advancePayment.ReferenceNumber,
+                PaymentDate = DateTime.UtcNow
             };
 
             await _context.BookingCustomerAdvances.AddAsync(bookingAdvance);
 
-            _logger.LogDebug($"Added advance payment: Customer {customerId}, " +
-                            $"Amount: {advancePayment.AdvanceAmount}, " +
-                            $"Method: {advancePayment.PaymentMethod}");
+            _logger.LogDebug(
+                $"Added advance payment: Customer {customerId}, " +
+                $"Amount: {advancePayment.AdvanceAmount}, " +
+                $"PaymentDate: {bookingAdvance.PaymentDate}");
         }
+
 
         // Optional: Remove GetOrCreateCustomerAsync if you're always using existing customers
         // Or keep it for backward compatibility
