@@ -1,11 +1,11 @@
 ﻿using abfi_weighing_scale_api.Data;
 using abfi_weighing_scale_api.Middleware;
-using abfi_weighing_scale_api.Repositories.Implementations;
+//using abfi_weighing_scale_api.Repositories.Implementations;
 using abfi_weighing_scale_api.Repositories.Interfaces;
 using abfi_weighing_scale_api.Services;
 using abfi_weighing_scale_api.Services.Booking;
 using abfi_weighing_scale_api.Services.Farms;
-using abfi_weighing_scale_api.Services.Implementations;
+//using abfi_weighing_scale_api.Services.Implementations;
 using abfi_weighing_scale_api.Services.Interfaces;
 using abfi_weighing_scale_api.Services.ProductClassifications;
 using abfi_weighing_scale_api.Services.Production;
@@ -27,10 +27,10 @@ namespace abfi_weighing_scale_api.DependencyInjection
             services.AddAutoMapper(typeof(AutoMapperProfile));
 
             // Register Repositories
-            services.AddScoped<IUserRepository, UserRepository>();
+            //services.AddScoped<IUserRepository, UserRepository>();
 
-            // Register Services
-            services.AddScoped<IUserService, UserService>();
+            //// Register Services
+            //services.AddScoped<IUserService, UserService>();
 
             // Register ProductClassification Service
             services.AddScoped<IProductClassificationService, ProductClassificationService>();
